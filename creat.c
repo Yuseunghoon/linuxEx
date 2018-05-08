@@ -16,8 +16,8 @@ int main(void)
 	int fd;
 	char temp[50];
 	char rbuf[50];
-	char lbuf[15]={'\0',};
-	char copy[100];
+	char lbuf[20];// 15
+	char copy[100]={'\0'};
 	int wcount;
 	int rcount; 
 	int pos;
@@ -55,19 +55,24 @@ int main(void)
 	//읽은 문자열 갯수를 확인
 	printf("rcount=%d\n",rcount);
 	
-	// 출력할 내용 : Do not count the eggs before they hatch.
+	// 출력할 내용 : Do not count the eggs before thet hatch.
 	//읽은 버퍼의 내용 확인
 	
 	
 	printf("rbuf=%s\n",rbuf);
 	
 	lseek(fd,0,SEEK_SET);
-	strncat(copy,rbuf,24);
+	strncpy(copy,rbuf,17);
+	strcat(copy,"eggs ");
+	lseek(fd,17,SEEK_SET);
+	read(fd,lbuf,18);
+	strcat(copy,lbuf);
+/*	strncat(copy,rbuf,24);
 	strcat(copy,"eggs ");
 	lseek(fd,24,SEEK_SET);
 	read(fd,lbuf,10);
 	strcat(copy, lbuf);
-
+*/
 	printf("copy : %s\n",copy);
 
 	//printf("fd=%d\n",fd);
