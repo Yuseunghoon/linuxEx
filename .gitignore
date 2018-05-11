@@ -1,1 +1,2 @@
 *.o
+.seek_io.c.swp

@@ -47,7 +47,7 @@ getNum(const char *fname, const char *arg, int flags, const char *name)
     base = (flags & GN_ANY_BASE) ? 0 : (flags & GN_BASE_8) ? 8 :
                         (flags & GN_BASE_16) ? 16 : 10;
 
-    errno = 0;//에러 발생했늕 히과인 위해 0 설정 뒤  호출 후 다시 확인
+    errno = 0;//에러 발생했는지 확인을  위해 0 설정 뒤  호출 후 다시 확인
     res = strtol(arg, &endptr, base);
 //arg 첫글자의 포인터 위치, null, 진수->문자열을 정수로 변환
 		
